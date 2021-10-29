@@ -1,0 +1,27 @@
+package post
+
+data class Post(
+    val id: Int,
+    var ownerId: Int,
+    var fromId: Int = 0,
+    var createdBy: Int = 0,
+    var date: Int,
+    var test: String,
+    var replyOwnerId: Int = 0,
+    var replyPostId: Int = 0,
+    var FriendsOnly: Boolean = false,
+    var comments: Comments = Comments(),
+    var copyright: String = "",
+    var likes: Likes = Likes(),
+    var reposts: Reposts = Reposts(),
+    var views: Views = Views(),
+    var postType: PostType,
+    var signerId: Int = 0,
+    var canPin: Boolean = false,
+    var canDelete: Boolean = false,
+    var canEdit: Boolean = false,
+    var isPinned: Boolean = false,
+    var markedAsAds: Boolean = false,
+    var isFavorite: Boolean = false,
+    var postponedId: Int = 0,
+)
