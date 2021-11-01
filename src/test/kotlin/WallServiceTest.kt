@@ -9,7 +9,7 @@ internal class WallServiceTest {
     @Test
     fun add_postLastId() {
         resetArray()
-        assertEquals(2, WallService.lastId)
+        assertEquals(3, WallService.lastId)
     }
 
     @Test
