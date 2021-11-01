@@ -1,11 +1,11 @@
 package post
 
 data class Post(
-    val id: Int,
+    var id: Int = 0,
     var ownerId: Int,
     var fromId: Int = 0,
     var createdBy: Int = 0,
-    var date: Int,
+    var date: Long,
     var test: String,
     var replyOwnerId: Int = 0,
     var replyPostId: Int = 0,
