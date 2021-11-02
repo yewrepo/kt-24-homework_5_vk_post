@@ -1,5 +1,7 @@
 package post
 
+import attachment.Attachment
+
 data class Post(
     val id: Int = 0,
     val ownerId: Int,
@@ -26,5 +28,6 @@ data class Post(
     val postponedId: Int = 0,
     val postSource: PostSource? = null,
     val geo: Geo? = null,
-    val copyHistory: Array<Any>? = null
+    val copyHistory: List<Any>? = null,
+    val attachment: List<Attachment>? = null
 )
