@@ -24,4 +24,7 @@ data class Post(
     val markedAsAds: Boolean = false,
     val isFavorite: Boolean = false,
     val postponedId: Int = 0,
+    val postSource: PostSource? = null,
+    val geo: Geo? = null,
+    val copyHistory: Array<Any>? = null
 )
