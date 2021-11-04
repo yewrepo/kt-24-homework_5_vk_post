@@ -11,7 +11,7 @@ object WallService {
     private var commentArray = emptyArray<Comment>()
 
     fun createComment(comment: Comment) {
-        val post = findById(comment.id)
+        val post = findById(comment.postId)
         if (post != null) {
             add(comment)
         } else {
@@ -56,7 +56,9 @@ object WallService {
         commentArray = emptyArray()
     }
 
-    private fun findById(id: Int): Post? = postArray.find { it.id == id }
+    private fun findById(id: Int): Post? = postArray.find {
+        it.id == id
+    }
 
     private fun copyPartly(newId: Int, source: Post, newPost: Post) = source.copy(
         id = newId,

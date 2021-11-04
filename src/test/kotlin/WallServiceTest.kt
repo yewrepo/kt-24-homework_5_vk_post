@@ -1,10 +1,38 @@
+import exception.PostNotFoundException
 import org.junit.Test
 import post.Post
 import post.PostType
 import java.util.*
 import org.junit.Assert.*
+import post.Comment
 
 internal class WallServiceTest {
+
+    @Test
+    fun createComment_shouldPass() {
+        resetArray()
+        WallService.createComment(
+            Comment(
+                postId = 1,
+                fromId = 1,
+                date = Date().time.toInt(),
+                text = "Some comment"
+            )
+        )
+    }
+
+    @Test(expected = PostNotFoundException::class)
+    fun createComment_shouldThrow() {
+        resetArray()
+        WallService.createComment(
+            Comment(
+                postId = 999,
+                fromId = 1,
+                date = Date().time.toInt(),
+                text = "Some comment"
+            )
+        )
+    }
 
     @Test
     fun add_postLastId() {
