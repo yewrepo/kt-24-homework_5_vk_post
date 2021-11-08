@@ -1,9 +1,29 @@
+import exception.PostNotFoundException
+import post.Comment
 import post.Post
 
 object WallService {
 
     var lastId: Int = 0
+    var lastCommentId: Int = 0
+
     private var postArray = emptyArray<Post>()
+    private var commentArray = emptyArray<Comment>()
+
+    fun createComment(comment: Comment) {
+        val post = findById(comment.postId)
+        if (post != null) {
+            add(comment)
+        } else {
+            throw PostNotFoundException()
+        }
+    }
+
+    private fun add(comment: Comment): Comment {
+        val commentCopy = comment.copy(id = lastCommentId++)
+        commentArray += commentCopy
+        return commentArray.last()
+    }
 
     fun add(post: Post): Post {
         val postCopy = post.copy(id = lastId++)
@@ -31,6 +51,13 @@ object WallService {
     fun clear() {
         lastId = 0
         postArray = emptyArray()
+
+        lastCommentId = 0
+        commentArray = emptyArray()
+    }
+
+    private fun findById(id: Int): Post? = postArray.find {
+        it.id == id
     }
 
     private fun copyPartly(newId: Int, source: Post, newPost: Post) = source.copy(
